@@ -1,0 +1,11 @@
+com\dips\model\UserInfo.class
+com\dips\model\AddressListDto.class
+com\dips\model\AddressModel.class
+com\dips\SpringSecurityOauth2Example1Application.class
+com\dips\contoller\UserController.class
+com\dips\configuration\ResourceServerConfiguration.class
+com\dips\service\UserInfoService.class
+com\dips\dao\UserDetailsRepository.class
+com\dips\service\UserDetailsServiceImpl.class
+com\dips\configuration\SecurityConfig.class
+com\dips\configuration\OAuthConfiguration.class
