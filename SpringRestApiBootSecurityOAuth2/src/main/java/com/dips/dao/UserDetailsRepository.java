@@ -24,4 +24,7 @@ public interface UserDetailsRepository extends CrudRepository<UserInfo, String> 
 
 	public void deleteById(Integer id);
 
+	
+	public UserInfo findByUserNameAndPassword(String userName, String password);
+
 }

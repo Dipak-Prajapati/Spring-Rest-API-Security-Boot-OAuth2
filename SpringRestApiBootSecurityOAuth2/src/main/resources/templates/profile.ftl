@@ -21,7 +21,7 @@
 								<div class="image_outer_container">
 									<div class="green_icon"></div>
 									<div class="image_inner_container">
-										<img src="data:image/jpeg;base64,${userModel.base64image}" class="img-fluid">
+										<img src="data:image/jpeg;base64,${(userModel.base64image)!""}" class="img-fluid">
 
 
 										<!-- https://bootsnipp.com/snippets/gN2b5 -->

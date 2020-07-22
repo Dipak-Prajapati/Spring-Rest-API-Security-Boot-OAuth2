@@ -64,7 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .logoutSuccessUrl("/logoutuser")
         .permitAll()
 		.and()
-		.authorizeRequests().antMatchers(HttpMethod.GET,"/user").hasRole("ADMIN");
+		.authorizeRequests().antMatchers(HttpMethod.GET,"/**").hasRole("USER");
 		/*.and()
 		.authorizeRequests().antMatchers(HttpMethod.POST,"/user").permitAll();*/
 	}

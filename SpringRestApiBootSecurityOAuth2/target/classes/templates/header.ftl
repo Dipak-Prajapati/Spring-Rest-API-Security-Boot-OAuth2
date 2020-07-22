@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Spring Boot Project</title>
+<title>Spring REST API Project</title>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <!-- css -->
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">

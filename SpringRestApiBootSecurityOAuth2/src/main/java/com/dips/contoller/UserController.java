@@ -106,6 +106,7 @@ public class UserController {
 	}*/
 	
 	public UserInfo getUserById(String userName,String password) {
+		System.out.println("userName :"+userName + ":::" + "password :" + password);
 		UserInfo userInfo = userService.getUserInfoById(userName,password);
 		if (userInfo == null) {
 			return null;

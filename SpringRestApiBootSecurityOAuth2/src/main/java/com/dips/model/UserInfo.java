@@ -70,6 +70,15 @@ public class UserInfo {
 	@Column(nullable = false)
 	private String pwd;
 	
+	private String password;
+	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	private String role;
 	
 	private short enabled;

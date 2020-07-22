@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dips.dao.AddressDetailsRepository;
@@ -12,7 +13,8 @@ import com.dips.dao.UserDetailsRepository;
 import com.dips.model.AddressModel;
 import com.dips.model.UserInfo;
 
-@Repository
+//@Repository
+@Service
 @Transactional
 public class UserInfoService {
 
@@ -31,8 +33,9 @@ public class UserInfoService {
 		return userDatailsRepository.findAllByEnabled((short) 1);
 	}
 
-	public UserInfo getUserInfoById(String userName,String pwd) {
-		return userDatailsRepository.findById(userName,pwd);
+	public UserInfo getUserInfoById(String userName,String password) {
+		//return userDatailsRepository.findById(userName,pwd);
+		return userDatailsRepository.findByUserNameAndPassword(userName,password);
 	}
 
 	public UserInfo addUser(UserInfo userInfo) {

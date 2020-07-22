@@ -25,7 +25,7 @@ public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
 	
 	@Autowired
 	UserDetailsService userDetailsService;
-
+	//UserDetailServiceImpl userDetailService;
 	@Override
 	public void configure(final AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
 		oauthServer.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");

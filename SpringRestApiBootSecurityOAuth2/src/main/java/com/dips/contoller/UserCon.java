@@ -68,8 +68,8 @@ public class UserCon {
 	@PostMapping("/logincheck")
 	public ModelAndView showUser(Model m, UserInfo userModel, HttpSession session,@RequestHeader HttpHeaders requestHeader) {
 		ModelAndView mav = null;
-		System.out.println("Email and password : " + userModel.getEmail() + " : " + userModel.getPwd());
-		if (userModel.getEmail().equals("admin@gmail.com") && userModel.getPwd().equals("aaaaaaaa")) {
+		System.out.println("Email and password : " + userModel.getUserName() + " : " + userModel.getPwd());
+		if (userModel.getUserName().equals("admin@gmail.com") && userModel.getPwd().equals("aaaaaaaa")) {
 			// Admin
 			System.out.println("Admin Method");
 			List<UserInfo> list = (List<UserInfo>) userController.getAllUser(requestHeader);
@@ -79,13 +79,15 @@ public class UserCon {
 			session.setAttribute("login", list);
 			return mav;
 		} else {
-			userModel = userController.getUserById(userModel.getUserName(),userModel.getPwd());
+			System.out.println("USER");
+			userModel = userController.getUserById(userModel.getUserName(),userModel.getPassword());
 			if (null != userModel) {
 				mav = new ModelAndView("profile");
 				mav.addObject("userModel", userModel);
 				session.setAttribute("loginUser", "user");
 				session.setAttribute("login", userModel);
 			} else {
+				
 				mav = new ModelAndView("login");
 				mav.addObject("message", "Invalid Details ! try with another");
 			}
