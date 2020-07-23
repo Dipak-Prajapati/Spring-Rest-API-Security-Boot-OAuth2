@@ -94,6 +94,28 @@ public class UserCon {
 			return mav;
 		}
 	}
+	
+	@RequestMapping("/logoutuser")
+	public String logoutUser(Model m, HttpSession session) {
+		session.removeAttribute("loginUser");
+		session.invalidate();
+		m.addAttribute("logoutmessage", "Logout SuccessFully");
+		return "login";
+	}
+
+	@PostMapping("/useredit")
+	public String displayEditForm(Model m, int id, HttpSession session) {
+		session.setAttribute("editData", id);
+		return "redirect:/editDetailsForm";
+	}
+
+	@RequestMapping("/editDetailsForm")
+	public String editData(Model m, HttpSession session) {
+		UserInfo userModel = new UserInfo();
+		userModel = userController.getUserByIdd((Integer) session.getAttribute("editData"));
+		m.addAttribute("userModel", userModel);
+		return "registration";
+	}
 
 	
 }

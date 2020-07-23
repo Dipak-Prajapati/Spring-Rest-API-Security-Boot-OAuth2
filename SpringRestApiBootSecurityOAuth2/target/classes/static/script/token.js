@@ -12,7 +12,7 @@ $(document).ready(function() {
 			    xhr.setRequestHeader ("Authorization", "Basic " + btoa("dipak" + ":" + "secret"));
 			},
 			data : {
-				userName : "dips",
+				username : "dips",
 				password : "dddddddd",
 				grant_type : 'password',
 				//client_id : "dipak",
@@ -21,7 +21,7 @@ $(document).ready(function() {
 
 			success : function(data) {
 				alert("hi");
-				
+				alert(data.access_token);	
 				console.log(data.access_token);
 				console.log(data.refresh_token);
 			},

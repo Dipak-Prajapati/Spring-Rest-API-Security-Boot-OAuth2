@@ -113,4 +113,13 @@ public class UserController {
 		}
 		return userInfo;
 	}
+	
+	public UserInfo getUserByIdd(Integer id) {
+		System.out.println("userName :"+id);
+		UserInfo userInfo = userService.getUserInfoByIdd(id);
+		if (userInfo == null) {
+			return null;
+		}
+		return userInfo;
+	}
 }

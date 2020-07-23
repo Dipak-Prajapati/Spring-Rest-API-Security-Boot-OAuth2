@@ -17,7 +17,7 @@ public interface UserDetailsRepository extends CrudRepository<UserInfo, String> 
 
 	public List<UserInfo> findAllByEnabled(short enabled);
 
-	public UserInfo findById(String userName,String pwd);
+	public UserInfo findById(Integer id);
 //
 //	@Override
 //	public UserInfo save(UserInfo userInfo);
@@ -26,5 +26,7 @@ public interface UserDetailsRepository extends CrudRepository<UserInfo, String> 
 
 	
 	public UserInfo findByUserNameAndPassword(String userName, String password);
+
+//	public UserInfo findByIdd(Integer id);
 
 }

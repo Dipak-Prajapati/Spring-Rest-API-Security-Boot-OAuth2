@@ -25,7 +25,7 @@ public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
 	
 	@Autowired
 	UserDetailsService userDetailsService;
-	//UserDetailServiceImpl userDetailService;
+
 	@Override
 	public void configure(final AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
 		oauthServer.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
@@ -38,8 +38,8 @@ public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
 		.authorizedGrantTypes("password", "authorization_code", "refresh_token").scopes("read","write")
 		.authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT", "USER","ADMIN")
 		.autoApprove(true)
-		.accessTokenValiditySeconds(1800)//Access token is only valid for 3 minutes.
-        .refreshTokenValiditySeconds(6000);//Refresh token is only valid for 10 minutes.;
+		.accessTokenValiditySeconds(180)//Access token is only valid for 3 minutes.
+        .refreshTokenValiditySeconds(600);//Refresh token is only valid for 10 minutes.;
 	}
 
     @Override

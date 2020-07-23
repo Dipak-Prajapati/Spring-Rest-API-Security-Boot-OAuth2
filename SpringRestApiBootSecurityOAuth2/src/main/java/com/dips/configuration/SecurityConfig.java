@@ -43,15 +43,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/logincheck",
                 "/script/**",
                 "/css/**",
-                "/image/**","/login"); // #3
+                "/image/**","/login","/favicon.ico"); // #3
     }
-
+	
+	 /*@Override
+	    public void configure(final WebSecurity web) throws Exception {
+	        web.ignoring().antMatchers("/**");
+	    }
+*/
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) 	
 		.and().authorizeRequests().antMatchers("/oauth/token")
 		.permitAll().anyRequest().authenticated()
+		.and()
+		.authorizeRequests().antMatchers(HttpMethod.GET,"/user").hasRole("USER")
 		.and()
 		.formLogin()
         .loginPage("/login")
@@ -62,9 +69,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .clearAuthentication(true)
         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
         .logoutSuccessUrl("/logoutuser")
-        .permitAll()
-		.and()
-		.authorizeRequests().antMatchers(HttpMethod.GET,"/**").hasRole("USER");
+        .permitAll();
+/*		.and()
+		.authorizeRequests().antMatchers(HttpMethod.GET,"/**").hasRole("USER");*/
 		/*.and()
 		.authorizeRequests().antMatchers(HttpMethod.POST,"/user").permitAll();*/
 	}

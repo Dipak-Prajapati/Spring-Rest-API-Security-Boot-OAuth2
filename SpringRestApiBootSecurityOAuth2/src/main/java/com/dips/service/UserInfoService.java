@@ -44,7 +44,7 @@ public class UserInfoService {
 	}
 
 	public UserInfo updateUser(UserInfo userRecord) {
-		UserInfo userInfo = userDatailsRepository.findById(userRecord.getUserName(),userRecord.getPwd());
+		UserInfo userInfo = userDatailsRepository.findByUserNameAndPassword(userRecord.getUserName(),userRecord.getPassword());
 		userInfo.setEmail(userRecord.getEmail());
 		userInfo.setPwd(userRecord.getPwd());
 		userInfo.setRole(userRecord.getRole());
@@ -84,9 +84,15 @@ public class UserInfoService {
 	}
 
 	public UserInfo updatePassword(Integer id, UserInfo userRecord) {
-		UserInfo userInfo = userDatailsRepository.findById(userRecord.getUserName(),userRecord.getPwd());
+		UserInfo userInfo = userDatailsRepository.findById(id);
 		userInfo.setPwd(userRecord.getPwd());
 		return userDatailsRepository.save(userInfo);
+	}
+
+	public UserInfo getUserInfoByIdd(Integer id) {
+		// TODO Auto-generated method stub
+		UserInfo userInfo = userDatailsRepository.findById(id);
+		return userInfo;
 	}
 
 	/*public UserInfo updateRole(Integer id, UserInfo userRecord) {
