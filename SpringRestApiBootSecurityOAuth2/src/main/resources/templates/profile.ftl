@@ -6,6 +6,12 @@
 	function noBack() { window.history.forward(); }
 </script>
 	
+	
+	
+
+	
+
+	
 		<main class="d-flex primary-background">
 		<div class="container">
 			<div class="row">
@@ -96,15 +102,15 @@
 									</#list>
 								</tbody>
 							</table>
-							<button class="btn btn-outline-light btn-lg login-bg" onclick = "preventBack()">	
-							<a href="logoutuser" style="color:#FFFFFF;"><span class="fa fa-sign-out"></span>Logout</a> </button>
-							
-							<form method="post" class="d-inline" action = "useredit">
-								<input type="hidden"  name="id" value="${userModel.id}">
-								<button type="submit" class="btn btn-outline-light btn-lg login-bg">
+							<button class="btn btn-outline-light btn-lg login-bg" id="logoutbtn" >	
+							<a style="color:#FFFFFF;"><span class="fa fa-sign-out"></span>Logout</a> </button>
+							<#-- href="logoutuser"  onclick = "preventBack()"-->
+							 <form method="post" class="d-inline"> <#-- action="useredit">   --> 
+								<input type="hidden" id="idd" name="id" value="${userModel.id}">
+								<button type="submit" id="userEditBtn" class="btn btn-outline-light btn-lg login-bg">
 									<span class="fa fa-edit mr-1"></span>Edit
 								</button>
-							</form>
+						 	</form>
 						</div>
 					</div>
 				</div>
@@ -113,6 +119,5 @@
 	</main>
 
 	
-
 	<!-- Footer -->
 	<#include "footer.ftl">

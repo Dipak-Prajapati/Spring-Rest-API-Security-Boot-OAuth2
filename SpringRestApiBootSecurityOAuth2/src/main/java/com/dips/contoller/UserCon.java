@@ -12,7 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -68,8 +70,8 @@ public class UserCon {
 	@PostMapping("/logincheck")
 	public ModelAndView showUser(Model m, UserInfo userModel, HttpSession session,@RequestHeader HttpHeaders requestHeader) {
 		ModelAndView mav = null;
-		System.out.println("Email and password : " + userModel.getUserName() + " : " + userModel.getPwd());
-		if (userModel.getUserName().equals("admin@gmail.com") && userModel.getPwd().equals("aaaaaaaa")) {
+		System.out.println("Email and password : " + userModel.getUserName() + " : " + userModel.getPassword());
+		if (userModel.getUserName().equals("admin@gmail.com") && userModel.getPassword().equals("aaaaaaaa")) {
 			// Admin
 			System.out.println("Admin Method");
 			List<UserInfo> list = (List<UserInfo>) userController.getAllUser(requestHeader);
@@ -96,25 +98,44 @@ public class UserCon {
 	}
 	
 	@RequestMapping("/logoutuser")
+	@ResponseBody
 	public String logoutUser(Model m, HttpSession session) {
 		session.removeAttribute("loginUser");
 		session.invalidate();
 		m.addAttribute("logoutmessage", "Logout SuccessFully");
 		return "login";
 	}
+	
+	/*@RequestMapping("/logoutuser")
+	public  ModelAndView logoutUser(HttpSession session) {
+	    ModelAndView mav = new ModelAndView();
+	    session.removeAttribute("loginUser");
+		session.invalidate();
+		//m.addAttribute("logoutmessage", "Logout SuccessFully");
+	    mav.setViewName("login");
+	    mav.addObject("logoutmessage", "Logout SuccessFully");
+	    return mav;     
+	}*/
 
-	@PostMapping("/useredit")
-	public String displayEditForm(Model m, int id, HttpSession session) {
+	//@PostMapping("/useredit")
+	@RequestMapping(value = "/useredit", method = RequestMethod.POST)
+	//@ResponseBody
+	public String displayEditForm(Model m,@RequestParam("id") int id, HttpSession session) {
+		System.out.println("displayEditForm" + id);
 		session.setAttribute("editData", id);
 		return "redirect:/editDetailsForm";
 	}
 
 	@RequestMapping("/editDetailsForm")
-	public String editData(Model m, HttpSession session) {
+	@ResponseBody
+	public ModelAndView editData(Model m, HttpSession session) {
+		System.out.println("editData");
+		ModelAndView mav = new ModelAndView("registration");
 		UserInfo userModel = new UserInfo();
 		userModel = userController.getUserByIdd((Integer) session.getAttribute("editData"));
-		m.addAttribute("userModel", userModel);
-		return "registration";
+		//m.addAttribute("userModel", userModel);
+		mav.addObject("userModel", userModel);
+		return mav;
 	}
 
 	
