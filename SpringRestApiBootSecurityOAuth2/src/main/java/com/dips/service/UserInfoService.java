@@ -39,14 +39,14 @@ public class UserInfoService {
 	}
 
 	public UserInfo addUser(UserInfo userInfo) {
-		userInfo.setPwd(userInfo.getPwd());
+		userInfo.setPassword(userInfo.getPassword());
 		return userDatailsRepository.save(userInfo);
 	}
 
 	public UserInfo updateUser(UserInfo userRecord) {
 		UserInfo userInfo = userDatailsRepository.findByUserNameAndPassword(userRecord.getUserName(),userRecord.getPassword());
 		userInfo.setEmail(userRecord.getEmail());
-		userInfo.setPwd(userRecord.getPwd());
+		userInfo.setPassword(userRecord.getPassword());
 		userInfo.setRole(userRecord.getRole());
 		userInfo.setEnabled(userRecord.getEnabled());
 		userInfo.setPic(userRecord.getPic());
@@ -85,7 +85,7 @@ public class UserInfoService {
 
 	public UserInfo updatePassword(Integer id, UserInfo userRecord) {
 		UserInfo userInfo = userDatailsRepository.findById(id);
-		userInfo.setPwd(userRecord.getPwd());
+		userInfo.setPassword(userRecord.getPassword());
 		return userDatailsRepository.save(userInfo);
 	}
 

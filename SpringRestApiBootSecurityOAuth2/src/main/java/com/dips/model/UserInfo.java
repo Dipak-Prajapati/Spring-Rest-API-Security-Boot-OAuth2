@@ -67,8 +67,8 @@ public class UserInfo {
 	
 	//@NotEmpty()
 	//@Pattern(regexp = "^[a-zA-Z0-9]{8,16}$",message = "* Password Can't be null and Enter minimum 8 character and maximum 16 character *")
-	@Column(nullable = false)
-	private String pwd;
+	//@Column(nullable = false)
+	//private String pwd;
 	
 	private String password;
 	
@@ -156,13 +156,13 @@ public class UserInfo {
 	public void setHobbie(String hobbie) {
 		this.hobbie = hobbie;
 	}
-	public String getPwd() {
+/*	public String getPwd() {
 		return pwd;
 	}
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
-	public short getEnabled() {
+*/	public short getEnabled() {
 		return enabled;
 	}
 	public void setEnabled(short enabled) {
@@ -199,8 +199,8 @@ public class UserInfo {
 	@Override
 	public String toString() {
 		return "UserModel [id=" + id + ", fname=" + fname + ", lname=" + lname + ", email=" + email + ", dob=" + dob
-				+ ", m_no=" + m_no + ", gender=" + gender + ", language=" + language + ", hobbie=" + hobbie + ", pwd="
-				+ pwd + "]";
+				+ ", m_no=" + m_no + ", gender=" + gender + ", language=" + language + ", hobbie=" + hobbie + ", password="
+				+ password + "]";
 	}
 
 	
